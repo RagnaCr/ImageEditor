@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SP_coursework
@@ -319,6 +320,88 @@ namespace SP_coursework
             {
                 return "Зображення не завантажено.";
             }
+        }
+        private async Task ApplyMedianFilter(int kernelSize)
+        {
+            try
+            {
+                progressBar.Visible = true;
+                progressBar.Maximum = image.Height;
+                progressBar.Value = 0;
+
+                await Task.Run(() =>
+                {
+                    if (image == null) return;
+
+                    Bitmap newImage = new Bitmap(image.Width, image.Height);
+                    int radius = kernelSize / 2;
+
+                    for (int y = radius; y < image.Height - radius; y++)
+                    {
+                        for (int x = radius; x < image.Width - radius; x++)
+                        {
+                            List<int> rValues = new List<int>();
+                            List<int> gValues = new List<int>();
+                            List<int> bValues = new List<int>();
+
+                            for (int dy = -radius; dy <= radius; dy++)
+                            {
+                                for (int dx = -radius; dx <= radius; dx++)
+                                {
+                                    Color neighborColor = image.GetPixel(x + dx, y + dy);
+                                    rValues.Add(neighborColor.R);
+                                    gValues.Add(neighborColor.G);
+                                    bValues.Add(neighborColor.B);
+                                }
+                            }
+
+                            // Сортируем значения и находим медиану
+                            rValues.Sort();
+                            gValues.Sort();
+                            bValues.Sort();
+                            int medianIndex = rValues.Count / 2;
+
+                            Color medianColor = Color.FromArgb(
+                                rValues[medianIndex],
+                                gValues[medianIndex],
+                                bValues[medianIndex]);
+
+                            newImage.SetPixel(x, y, medianColor);
+                        }
+
+                        this.Invoke(new Action(() =>
+                        {
+                            progressBar.Value = y + 1;
+                        }));
+                    }
+
+                    image.Dispose();
+                    image = newImage;
+                    this.BackgroundImage = (Image)image.Clone();
+                    this.BackgroundImageLayout = ImageLayout.Stretch;
+                });
+                progressBar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                progressBar.Visible = false;
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
+            }
+            progressBar.Visible = false;
+        }
+    
+
+        private async void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            using (var form = new KernelSizeForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    int kernelSize = form.KernelSize;
+                    await ApplyMedianFilter(kernelSize);
+                }
+            }
+
         }
     }
     public static class MathExtensions

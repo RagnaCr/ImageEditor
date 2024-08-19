@@ -23,3 +23,16 @@ C:\Users\LPayr\Desktop\Bilov_sp_coursework\obj\Debug\SP_coursework.pdb
 C:\Users\LPayr\Desktop\Bilov_sp_coursework\obj\Debug\SP_coursework.ShuffleColorsDialog.resources
 C:\Users\LPayr\Desktop\Bilov_sp_coursework\obj\Debug\SP_coursework.ChildForm.resources
 C:\Users\LPayr\Desktop\Bilov_sp_coursework\obj\Debug\SP_coursework.NoiseSettingsForm.resources
+C:\Users\LPayr\Desktop\ImageEditor\bin\Debug\SP_coursework.exe.config
+C:\Users\LPayr\Desktop\ImageEditor\bin\Debug\SP_coursework.exe
+C:\Users\LPayr\Desktop\ImageEditor\bin\Debug\SP_coursework.pdb
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.csproj.AssemblyReference.cache
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.ChildForm.resources
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.Form1.resources
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.NoiseSettingsForm.resources
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.Properties.Resources.resources
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.ShuffleColorsDialog.resources
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.csproj.GenerateResource.cache
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.csproj.CoreCompileInputs.cache
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.exe
+C:\Users\LPayr\Desktop\ImageEditor\obj\Debug\SP_coursework.pdb
